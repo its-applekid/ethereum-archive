@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 
 interface BlockInfo {
   number: number
@@ -26,46 +26,10 @@ export function LiveBlockFeed({ variant = 'full', maxBlocks = 5 }: LiveBlockFeed
   const [blocks, setBlocks] = useState<BlockInfo[]>([])
   const [isConnected, setIsConnected] = useState(false)
   const [error, setError] = useState<string | null>(null)
-  const wsRef = useRef<WebSocket | null>(null)
 
   useEffect(() => {
-    const connectWebSocket = () => {
-      // Try WebSocket first
-      const wsUrl = `${window.location.protocol === 'https:' ? 'wss:' : 'ws:'}//${window.location.host}/api/blocks/live`
-      
-      try {
-        const ws = new WebSocket(wsUrl)
-        wsRef.current = ws
-
-        ws.onopen = () => {
-          setIsConnected(true)
-          setError(null)
-          console.log('Live block feed connected')
-        }
-
-        ws.onmessage = (event) => {
-          try {
-            const block: BlockInfo = JSON.parse(event.data)
-            setBlocks(prev => [block, ...prev].slice(0, maxBlocks))
-          } catch (e) {
-            console.error('Failed to parse block:', e)
-          }
-        }
-
-        ws.onerror = () => {
-          setError('Connection error')
-          fallbackToPolling()
-        }
-
-        ws.onclose = () => {
-          setIsConnected(false)
-        }
-      } catch (e) {
-        fallbackToPolling()
-      }
-    }
-
-    const fallbackToPolling = () => {
+    // Skip WebSocket on static hosting (GitHub Pages) - go straight to polling
+    const startPolling = () => {
       // Fallback: poll every 12 seconds
       const poll = async () => {
         try {
@@ -114,16 +78,14 @@ export function LiveBlockFeed({ variant = 'full', maxBlocks = 5 }: LiveBlockFeed
       // Poll every 12 seconds (Ethereum block time)
       const interval = setInterval(poll, 12000)
       
-      return () => clearInterval(interval)
+      return interval
     }
 
-    // Try WebSocket first, will fallback to polling on error
-    connectWebSocket()
+    // Start polling immediately (no WebSocket on static hosting)
+    const interval = startPolling()
 
     return () => {
-      if (wsRef.current) {
-        wsRef.current.close()
-      }
+      if (interval) clearInterval(interval)
     }
   }, [maxBlocks])
 
