@@ -1,0 +1,135 @@
+{
+  "hardForks": [
+    {
+      "name": "Frontier",
+      "block": 0,
+      "timestamp": "2015-07-30T15:26:13Z",
+      "description": "Genesis block - Ethereum mainnet launches",
+      "tags": ["protocol", "genesis"]
+    },
+    {
+      "name": "Frontier Thawing",
+      "block": 200000,
+      "timestamp": "2015-09-07T00:00:00Z",
+      "description": "Difficulty bomb introduced, gas limit increased",
+      "tags": ["protocol"]
+    },
+    {
+      "name": "Homestead",
+      "block": 1150000,
+      "timestamp": "2016-03-14T18:49:53Z",
+      "description": "First planned hard fork - protocol improvements",
+      "tags": ["protocol"]
+    },
+    {
+      "name": "DAO Fork",
+      "block": 1920000,
+      "timestamp": "2016-07-20T13:20:40Z",
+      "description": "Controversial fork to recover DAO funds - Ethereum Classic splits off",
+      "tags": ["protocol", "security", "governance"]
+    },
+    {
+      "name": "Tangerine Whistle",
+      "block": 2463000,
+      "timestamp": "2016-10-18T13:19:31Z",
+      "description": "Gas repricing for IO-heavy operations (DoS attack response)",
+      "tags": ["protocol", "security"]
+    },
+    {
+      "name": "Spurious Dragon",
+      "block": 2675000,
+      "timestamp": "2016-11-22T16:15:44Z",
+      "description": "State clearing, replay attack protection",
+      "tags": ["protocol", "security"]
+    },
+    {
+      "name": "Byzantium",
+      "block": 4370000,
+      "timestamp": "2017-10-16T05:22:11Z",
+      "description": "Part 1 of Metropolis - zkSNARK support, difficulty bomb delay",
+      "tags": ["protocol", "scaling"]
+    },
+    {
+      "name": "Constantinople/Petersburg",
+      "block": 7280000,
+      "timestamp": "2019-02-28T19:52:04Z",
+      "description": "Part 2 of Metropolis - gas cost reductions, CREATE2",
+      "tags": ["protocol"]
+    },
+    {
+      "name": "Istanbul",
+      "block": 9069000,
+      "timestamp": "2019-12-08T00:25:09Z",
+      "description": "Gas repricing, improved L2 compatibility",
+      "tags": ["protocol", "scaling"]
+    },
+    {
+      "name": "Muir Glacier",
+      "block": 9200000,
+      "timestamp": "2020-01-02T08:30:49Z",
+      "description": "Difficulty bomb delay",
+      "tags": ["protocol"]
+    },
+    {
+      "name": "Berlin",
+      "block": 12244000,
+      "timestamp": "2021-04-15T10:07:03Z",
+      "description": "Gas cost changes for specific EVM operations",
+      "tags": ["protocol"]
+    },
+    {
+      "name": "London",
+      "block": 12965000,
+      "timestamp": "2021-08-05T12:33:42Z",
+      "description": "EIP-1559 - Fee market reform, ETH burning begins",
+      "tags": ["protocol", "defi"]
+    },
+    {
+      "name": "Arrow Glacier",
+      "block": 13773000,
+      "timestamp": "2021-12-09T19:55:23Z",
+      "description": "Difficulty bomb delay",
+      "tags": ["protocol"]
+    },
+    {
+      "name": "Gray Glacier",
+      "block": 15050000,
+      "timestamp": "2022-06-30T10:54:04Z",
+      "description": "Difficulty bomb delay (final before Merge)",
+      "tags": ["protocol"]
+    },
+    {
+      "name": "The Merge",
+      "block": 15537394,
+      "timestamp": "2022-09-15T06:42:42Z",
+      "description": "Transition from Proof of Work to Proof of Stake - historic moment",
+      "tags": ["protocol", "scaling", "security"],
+      "slot": 4700013,
+      "isPostMerge": true
+    },
+    {
+      "name": "Shanghai/Capella",
+      "block": null,
+      "slot": 6209536,
+      "timestamp": "2023-04-12T22:27:35Z",
+      "description": "Staked ETH withdrawals enabled",
+      "tags": ["protocol", "defi"],
+      "isPostMerge": true
+    },
+    {
+      "name": "Dencun",
+      "block": null,
+      "slot": 8626176,
+      "timestamp": "2024-03-13T13:55:35Z",
+      "description": "EIP-4844 - Proto-danksharding, blob transactions for L2 scaling",
+      "tags": ["protocol", "scaling"],
+      "isPostMerge": true
+    }
+  ],
+  "metadata": {
+    "preMergeBlockTime": 13.5,
+    "postMergeSlotTime": 12,
+    "mergeBlock": 15537394,
+    "mergeTimestamp": "2022-09-15T06:42:42Z"
+  }
+}
