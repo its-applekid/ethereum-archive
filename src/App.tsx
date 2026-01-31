@@ -1,18 +1,35 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { Timeline } from './components/Timeline'
 import { Header } from './components/Header'
 import { DetailPanel } from './components/DetailPanel'
 import { L2Chains } from './components/L2Chains'
 import { AudioPlayer } from './components/AudioPlayer'
 import { LiveBlockFeed } from './components/LiveBlockFeed'
+import { TagFilter } from './components/TagFilter'
 import { TIMELINE_DATA, ERA_INFO } from './data/timeline'
-import type { TimelineNode, Era } from './data/timeline'
+import type { TimelineNode, Era, Tag } from './data/timeline'
+
+// All available tags
+const ALL_TAGS: Tag[] = ['protocol', 'scaling', 'defi', 'nft', 'social', 'research', 'security']
 
 function App() {
   const [selectedNode, setSelectedNode] = useState<TimelineNode | null>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [currentEra, setCurrentEra] = useState<Era>('frontier')
+  const [activeTags, setActiveTags] = useState<Tag[]>(ALL_TAGS)
   const timelineRef = useRef<HTMLDivElement>(null)
+
+  // Filter timeline nodes based on active tags
+  const filteredNodes = useMemo(() => {
+    if (activeTags.length === ALL_TAGS.length) {
+      return TIMELINE_DATA // Show all if all tags active
+    }
+    return TIMELINE_DATA.filter(node => {
+      // Show nodes that have at least one matching tag, or no tags (legacy)
+      if (!node.tags || node.tags.length === 0) return true
+      return node.tags.some(tag => activeTags.includes(tag))
+    })
+  }, [activeTags])
 
   // Track scroll progress for L2 chains visualization
   useEffect(() => {
@@ -90,11 +107,24 @@ function App() {
               </svg>
             </div>
           </div>
+
+          {/* Tag Filter */}
+          <div className="max-w-md mx-auto mt-8">
+            <TagFilter 
+              activeTags={activeTags} 
+              onTagsChange={setActiveTags} 
+            />
+            {filteredNodes.length !== TIMELINE_DATA.length && (
+              <p className="text-sm text-[var(--text-muted)] text-center mt-2">
+                Showing {filteredNodes.length} of {TIMELINE_DATA.length} events
+              </p>
+            )}
+          </div>
         </section>
 
         {/* Timeline Section */}
         <Timeline 
-          nodes={TIMELINE_DATA} 
+          nodes={filteredNodes} 
           onSelectNode={setSelectedNode}
           selectedNodeId={selectedNode?.id}
         />
