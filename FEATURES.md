@@ -129,6 +129,24 @@ Tags: `protocol`, `scaling`, `defi`, `nft`, `social`, `research`, `security`
 - Bankless/podcast interviews
 - Research day presentations
 
+### DevCon & DevConnect Events
+Link to archive.org or live sources:
+- DevCon 0 (Berlin, 2014)
+- DevCon 1 (London, 2015)
+- DevCon 2 (Shanghai, 2016)
+- DevCon 3 (Cancún, 2017)
+- DevCon 4 (Prague, 2018)
+- DevCon 5 (Osaka, 2019)
+- DevCon 6 (Bogotá, 2022)
+- DevCon 7 (Bangkok, 2024)
+- DevConnect (Amsterdam 2022, Istanbul 2023, etc.)
+
+Sources:
+- https://archive.devcon.org/ (official archive)
+- https://devcon.org/
+- YouTube playlists for each event
+- archive.org for historical sites
+
 ### Key Talks to Embed
 - Vitalik's rollup-centric roadmap announcement (turning point!)
 - The Merge countdown
