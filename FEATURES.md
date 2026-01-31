@@ -205,6 +205,23 @@ For each event, find:
 - [ ] DeFi Summer (Compound COMP) — announcement posts
 - [ ] NFT boom (Beeple) — Christie's auction page
 
+### AllCoreDevs Calls (Big Task)
+**Add ALL ACD calls to the timeline as filterable events.**
+
+Data sources:
+- `ethereum/pm` repo — meeting notes in markdown
+- Forkcast.org — structured call data
+- YouTube — recordings
+
+Implementation:
+- Automate ingestion from ethereum/pm repo
+- Each call becomes a timeline event with type `acd_call`
+- Tag: `protocol`
+- Links: YouTube recording, meeting notes, agenda
+- Filter toggle to show/hide ACD calls (there are 200+)
+
+This is a data aggregation task — perfect for the Rust backend.
+
 ---
 
 ## Architecture
