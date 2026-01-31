@@ -60,11 +60,10 @@ function App() {
       <AudioPlayer />
       
       <main className="relative" ref={timelineRef}>
-        {/* L2 chains background visualization */}
-        <L2Chains 
-          progress={scrollProgress} 
-          height={document.documentElement.scrollHeight} 
-        />
+        {/* L2 chains background visualization - constrained to main content */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <L2Chains progress={scrollProgress} />
+        </div>
 
         {/* Hero Section */}
         <section className="flex flex-col items-center justify-center min-h-[60vh] px-8 text-center relative z-10">

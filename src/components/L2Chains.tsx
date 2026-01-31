@@ -28,15 +28,15 @@ const L2_CHAINS: L2Chain[] = [
 interface L2ChainsProps {
   /** Current scroll position (0-1) representing timeline progress */
   progress: number
-  /** Height of the timeline section */
-  height: number
+  /** Height of the timeline section (optional, uses parent height if not set) */
+  height?: number
 }
 
 /**
  * Renders faded L2 chain lines in the background
  * Lines appear as their launch date is reached based on scroll progress
  */
-export function L2Chains({ progress, height }: L2ChainsProps) {
+export function L2Chains({ progress }: L2ChainsProps) {
   // Convert date to approximate progress (0-1)
   const dateToProgress = (date: string): number => {
     const start = new Date('2015-07-30').getTime() // Genesis
@@ -62,7 +62,6 @@ export function L2Chains({ progress, height }: L2ChainsProps) {
   return (
     <div 
       className="absolute inset-0 overflow-hidden pointer-events-none"
-      style={{ height }}
     >
       {/* Main Ethereum line (center) */}
       <div 
