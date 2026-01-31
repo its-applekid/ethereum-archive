@@ -180,6 +180,12 @@ export const TIMELINE_DATA: TimelineNode[] = [
     importance: 'significant',
     content: `CryptoKitties, a game for breeding digital cats, became so popular it accounted for 25% of Ethereum traffic. Gas prices spiked and transactions backed up, making clear the urgent need for scaling solutions.`,
     tags: ['nft', 'scaling'],
+    links: [
+      { label: 'CryptoKitties Site (2017 archive)', url: 'https://web.archive.org/web/20171202052136/https://www.cryptokitties.co/' },
+      { label: 'CryptoKitties Current Site', url: 'https://www.cryptokitties.co/' },
+      { label: 'BBC News Coverage', url: 'https://www.bbc.com/news/technology-42237162' },
+      { label: 'Congestion Analysis (archive)', url: 'https://web.archive.org/web/20171204144857/https://ethgasstation.info/' },
+    ],
   },
   {
     id: 'makerdao-launch',
@@ -191,6 +197,12 @@ export const TIMELINE_DATA: TimelineNode[] = [
     importance: 'major',
     content: `MakerDAO launched DAI, a decentralized stablecoin backed by ETH collateral. Users could lock ETH in Collateralized Debt Positions (CDPs) to mint DAI. This was DeFi's first major primitive and proved smart contracts could create stable value.`,
     tags: ['defi'],
+    links: [
+      { label: 'MakerDAO Site (2017 archive)', url: 'https://web.archive.org/web/20171220161929/https://makerdao.com/' },
+      { label: 'MakerDAO Current Site', url: 'https://makerdao.com/' },
+      { label: 'DAI Whitepaper', url: 'https://makerdao.com/en/whitepaper/' },
+      { label: 'Launch Announcement (Reddit)', url: 'https://www.reddit.com/r/MakerDAO/comments/7lhqwe/dai_is_now_live/' },
+    ],
   },
   {
     id: 'constantinople',
@@ -213,7 +225,14 @@ export const TIMELINE_DATA: TimelineNode[] = [
     summary: 'Hayden Adams launches Uniswap, the first automated market maker (AMM) DEX on Ethereum.',
     era: 'metropolis',
     importance: 'major',
-    content: `Uniswap introduced the x*y=k constant product formula, enabling trustless token swaps without order books. Anyone could provide liquidity and earn fees. This simple design would spark DeFi Summer and inspire countless forks.`
+    content: `Uniswap introduced the x*y=k constant product formula, enabling trustless token swaps without order books. Anyone could provide liquidity and earn fees. This simple design would spark DeFi Summer and inspire countless forks.`,
+    tags: ['defi'],
+    links: [
+      { label: 'Hayden Adams Announcement', url: 'https://twitter.com/haaborlmyHadams/status/1058376395108376577' },
+      { label: 'Uniswap V1 Docs (archive)', url: 'https://web.archive.org/web/20181207013118/https://docs.uniswap.io/' },
+      { label: 'Uniswap Current Site', url: 'https://uniswap.org/' },
+      { label: 'Original Reddit Post', url: 'https://www.reddit.com/r/ethereum/comments/9udkhy/uniswap_a_unique_exchange/' },
+    ],
   },
   
   // ISTANBUL ERA
@@ -270,7 +289,13 @@ export const TIMELINE_DATA: TimelineNode[] = [
     summary: 'Compound distributes COMP tokens, igniting "DeFi Summer" and yield farming mania.',
     era: 'beacon',
     importance: 'major',
-    content: `Compound's COMP token distribution created a new paradigm: "liquidity mining." Users earned governance tokens for providing liquidity. This sparked DeFi Summer 2020, with total value locked (TVL) exploding from $1B to $10B+ in months.`
+    content: `Compound's COMP token distribution created a new paradigm: "liquidity mining." Users earned governance tokens for providing liquidity. This sparked DeFi Summer 2020, with total value locked (TVL) exploding from $1B to $10B+ in months.`,
+    tags: ['defi'],
+    links: [
+      { label: 'COMP Distribution Announcement', url: 'https://medium.com/compound-finance/expanding-compound-governance-ce13fcd4fe36' },
+      { label: 'Compound Site', url: 'https://compound.finance/' },
+      { label: 'DeFi Summer Coverage (Coindesk)', url: 'https://www.coindesk.com/markets/2020/10/14/the-defi-summer-of-2020-and-what-it-means-for-ethereum/' },
+    ],
   },
   {
     id: 'yearn-launch',
@@ -470,6 +495,12 @@ export const TIMELINE_DATA: TimelineNode[] = [
     importance: 'major',
     content: `Digital artist Beeple sold an NFT at Christie's auction house for $69.3 million — the third-highest price for a living artist. This mainstream moment brought NFTs into cultural consciousness and sparked a speculative frenzy.`,
     tags: ['nft', 'social'],
+    links: [
+      { label: "Christie's Auction Page", url: 'https://onlineonly.christies.com/s/beeple-first-5000-days/beeple-b-1981-1/112924' },
+      { label: 'NYT Coverage', url: 'https://www.nytimes.com/2021/03/11/arts/design/nft-auction-christies-beeple.html' },
+      { label: "Beeple's Site", url: 'https://www.beeple-crap.com/' },
+      { label: 'The Artwork (IPFS)', url: 'https://ipfsgateway.makersplace.com/ipfs/QmXkxpwAHCtDXbbZHUwqtFucG1RMS6T87vi1CdvadfL7qA' },
+    ],
   },
   {
     id: 'opensea-peak',

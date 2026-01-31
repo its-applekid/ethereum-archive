@@ -178,6 +178,28 @@ Sources:
 
 ---
 
+## TODO: Primary Source Links for Each Event
+
+**Task:** Replace generic "Learn More → ethereum.org" with actual primary sources.
+
+For each event, find:
+1. **Archive.org links** — original websites/pages at the time (e.g., MakerDAO site circa 2017)
+2. **Current site** — if still exists, clearly labeled as "current"
+3. **Blog posts/announcements** — official announcements, Vitalik posts, etc.
+4. **Discussion threads** — Reddit, Twitter, forum archives
+5. **Technical specs** — EIPs, GitHub PRs, specs
+
+**Priority events to source:**
+- [ ] MakerDAO launch — archive.org of original site
+- [ ] Uniswap V1/V2/V3 — Hayden Adams announcements
+- [ ] CryptoKitties — original site, news coverage
+- [ ] All hard forks — ethereum/pm specs, EIP links
+- [ ] The Merge — countdown site, official comms
+- [ ] DeFi Summer (Compound COMP) — announcement posts
+- [ ] NFT boom (Beeple) — Christie's auction page
+
+---
+
 ## Architecture
 
 ### Backend (Rust)
