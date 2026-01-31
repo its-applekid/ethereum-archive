@@ -82,12 +82,19 @@ Tags: `protocol`, `scaling`, `defi`, `nft`, `social`, `research`, `security`
 - [x] WebSocket connection for real-time blocks (with polling fallback)
 - [x] Links to Etherscan for details
 - [x] Historical becomes present
+- [x] Older blocks fade, newest at bottom (highlighted)
+- [x] Auto-cycles without scrolling
+
+### Future History Section
+- [x] "The history that hasn't happened yet" — FutureHistory.tsx
+- [x] Upcoming upgrades: Pectra, Verkle, Danksharding, Single Slot Finality
+- [x] Status badges (Planning/Testing/Scheduled)
+- [x] Links to Forkcast and specs
 
 ### Audio Layer
 - [x] Play/pause button (bottom left, unobtrusive) — AudioPlayer.tsx
-- [ ] Actual audio files (need to source/license)
-- [ ] Reference: Yuri Petrobsky "Cyberpunk Runner"
-- [ ] Music evolves as you scroll through eras (structure ready, needs tracks)
+- [x] Yuri Petrovski "The Cyberpunk Runner" via YouTube embed
+- [ ] Music evolves as you scroll through eras (future enhancement)
   - Early Ethereum = minimal/ambient
   - DeFi summer = more intense
   - Present = full cyberpunk
