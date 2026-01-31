@@ -1,5 +1,5 @@
 /**
- * Core data types for Ethereum Historical Society
+ * Core data types for Ethereum Archive
  */
 
 // Tag categories for filtering

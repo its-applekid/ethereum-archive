@@ -1,4 +1,4 @@
-# Ethereum Historical Society — Data Sources Inventory
+# Ethereum Archive — Data Sources Inventory
 
 *Research in progress*
 

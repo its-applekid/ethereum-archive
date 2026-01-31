@@ -1,4 +1,4 @@
-# Ethereum Historical Society — Vision Doc
+# Ethereum Archive — Vision Doc
 
 *Captured from conversation with Everdred, 2026-01-30*
 

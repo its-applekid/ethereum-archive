@@ -58,27 +58,32 @@ interface TimelineEntryProps {
 }
 
 function TimelineEntry({ node, index, isSelected, onSelect }: TimelineEntryProps) {
-  const isLeft = index % 2 === 0
+  // Cards alternate: even = card left; odd = card right
+  const cardOnLeft = index % 2 === 0
+  
+  // Events that spawn new lines get circle at BOTTOM, others at TOP
+  const spawnsLine = node.type === 'scaling' || node.type === 'hard_fork'
+  const circleAtBottom = spawnsLine
 
   return (
     <div 
       className={`
-        relative flex items-center gap-8 mb-12
-        ${isLeft ? 'flex-row' : 'flex-row-reverse'}
+        relative flex gap-4 mb-12
+        ${cardOnLeft ? 'flex-row' : 'flex-row-reverse'}
+        ${circleAtBottom ? 'items-end' : 'items-start'}
       `}
     >
-      {/* Card side */}
-      <div className={`flex-1 ${isLeft ? 'text-right' : 'text-left'}`}>
+      {/* Card - takes 80% width */}
+      <div className="w-[80%]">
         <TimelineCard 
           node={node} 
           isSelected={isSelected}
           onClick={onSelect}
-          alignment={isLeft ? 'right' : 'left'}
         />
       </div>
 
-      {/* Center node marker */}
-      <div className="relative z-10 flex-shrink-0">
+      {/* Node marker circle - in remaining 20%, on center line */}
+      <div className={`w-[20%] flex justify-center relative z-10 ${circleAtBottom ? 'pb-2' : 'pt-2'}`}>
         <button
           onClick={onSelect}
           className={`
@@ -95,17 +100,15 @@ function TimelineEntry({ node, index, isSelected, onSelect }: TimelineEntryProps
         {node.blockNumber !== undefined && (
           <div 
             className={`
-              absolute top-1/2 -translate-y-1/2 text-xs font-mono text-[var(--text-muted)]
-              ${isLeft ? 'left-8' : 'right-8'}
+              absolute text-xs font-mono text-[var(--text-muted)] whitespace-nowrap
+              ${circleAtBottom ? 'bottom-2' : 'top-2'}
+              ${cardOnLeft ? 'left-[60%]' : 'right-[60%]'}
             `}
           >
             #{node.blockNumber.toLocaleString()}
           </div>
         )}
       </div>
-
-      {/* Empty space on other side */}
-      <div className="flex-1" />
     </div>
   )
 }

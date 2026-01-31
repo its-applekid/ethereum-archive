@@ -1,4 +1,4 @@
-# Ethereum Historical Society 📜
+# Ethereum Archive 📜
 
 An interactive timeline exploring Ethereum's evolution from whitepaper to world computer.
 

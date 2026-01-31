@@ -1,4 +1,4 @@
-# Ethereum Historical Society — Feature Breakdown
+# Ethereum Archive — Feature Breakdown
 
 *Detailed feature list from vision sessions. Keep this up to date.*
 
@@ -68,10 +68,21 @@ Tags: `protocol`, `scaling`, `defi`, `nft`, `social`, `research`, `security`
 
 ### L2 Chain Visualization
 - [x] Faded lines in background — L2Chains.tsx
-- [x] Appear at launch date
-- [x] Optimism, Arbitrum, Base, zkSync, Linea, Scroll
-- [x] Historical: Plasma, Raiden (more faded)
-- [x] ETC fork as diverging line
+- [x] Lines tied to specific milestones (not arbitrary)
+- [x] Full-length lines (from milestone to bottom of page)
+- [x] Optimism (red), Arbitrum (blue), Base (blue), zkSync, Linea, Scroll
+- [x] Historical: Plasma, Raiden (very faded - abandoned)
+- [x] ETC fork as first branch (most faded - ancient history)
+- [x] Horizontal connectors from main line to branches
+- [x] Unique shimmer effects per chain (slow/medium/fast/pulse/wave)
+- [x] Age-based opacity (older = more faded)
+- [x] The Merge glow effect
+- [x] Dencun/4844 milestone glow
+- [x] **Beacon Chain** — parallel line (orange, more solid) that curves and merges into mainline at The Merge
+- [x] SVG curve for smooth Beacon Chain → mainline merge animation
+- [x] **Hard fork ghost branches** — short dashed curves at each fork that fade out (the "old chain" that died)
+- [x] **Rainbow effect at timeline end** — L2 lines get brighter/glowier as you scroll toward present
+- [x] **Live section shimmer** — main line pulses/shimmers only in the live block section (bottom 8%); solid elsewhere
 
 ---
 
@@ -154,6 +165,13 @@ Sources:
 - YouTube playlists for each event
 - archive.org for historical sites
 
+### L2Beat (Primary Source for L2 Data)
+**https://l2beat.com/** — Layer 2 Analytics & Risk Analysis
+- TVL, activity, and risk assessments for all major L2s
+- Use for L2 milestone links (e.g., l2beat.com/scaling/projects/optimism)
+- Risk framework explanations
+- Historical data on L2 growth
+
 ### Forkcast.org (Primary Source for Recent Data)
 **https://forkcast.org/** — Ethereum Upgrade Tracker
 - AllCoreDevs call links and notes
@@ -204,6 +222,16 @@ For each event, find:
 5. **Technical specs** — EIPs, GitHub PRs, specs
 
 **Priority events to source:**
+
+**L2 launches (link to L2Beat + official sites):**
+- [x] Optimism → l2beat.com/scaling/projects/optimism + optimism.io
+- [x] Arbitrum → l2beat.com/scaling/projects/arbitrum + arbitrum.io
+- [x] Base → l2beat.com/scaling/projects/base + base.org
+- [x] zkSync Era → l2beat.com/scaling/projects/zksync-era + zksync.io
+- [x] Linea → l2beat.com/scaling/projects/linea + linea.build
+- [x] Scroll → l2beat.com/scaling/projects/scroll + scroll.io
+
+**DeFi/App launches:**
 - [ ] MakerDAO launch — archive.org of original site
 - [ ] Uniswap V1/V2/V3 — Hayden Adams announcements
 - [ ] CryptoKitties — original site, news coverage
