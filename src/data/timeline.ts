@@ -272,12 +272,19 @@ export const TIMELINE_DATA: TimelineNode[] = [
   {
     id: 'rollup-research',
     type: 'scaling',
-    date: '2019-08-29',
+    date: '2021-01-05',
     title: 'Rollups Emerge',
     summary: "Vitalik publishes 'An Incomplete Guide to Rollups', establishing them as the primary L2 strategy.",
-    era: 'istanbul',
+    era: 'beacon',
     importance: 'major',
-    content: `Rollups execute transactions off-chain but post data on-chain, inheriting Ethereum's security. Two types emerged: Optimistic (assume valid, fraud proofs) and ZK (validity proofs). This marked the shift to a "rollup-centric roadmap."`
+    content: `Rollups execute transactions off-chain but post data on-chain, inheriting Ethereum's security. Two types emerged: Optimistic (assume valid, fraud proofs) and ZK (validity proofs). This marked the shift to a "rollup-centric roadmap."`,
+    tags: ['scaling', 'research'],
+    sourceUrl: 'https://vitalik.eth.limo/general/2021/01/05/rollup.html',
+    links: [
+      { label: 'An Incomplete Guide to Rollups', url: 'https://vitalik.eth.limo/general/2021/01/05/rollup.html' },
+      { label: 'Rollup-Centric Roadmap (Oct 2020)', url: 'https://ethereum-magicians.org/t/a-rollup-centric-ethereum-roadmap/4698' },
+      { label: 'ethereum.org: Layer 2', url: 'https://ethereum.org/en/layer-2/' },
+    ],
   },
   {
     id: 'muir-glacier',
@@ -584,6 +591,12 @@ export const TIMELINE_DATA: TimelineNode[] = [
     importance: 'major',
     content: `ENS (Ethereum Name Service) allowed users to register .eth domains that resolve to Ethereum addresses. Instead of 0x123...abc, you could use vitalik.eth. This became the identity layer for Ethereum — the first step toward web3 identity.`,
     tags: ['defi', 'social'],
+    links: [
+      { label: 'ENS Official Site', url: 'https://ens.domains/' },
+      { label: 'ENS Announcement', url: 'https://medium.com/the-ethereum-name-service/announcing-the-ethereum-name-service-relaunch-date-4390af6dd9a2' },
+      { label: 'ENS Docs', url: 'https://docs.ens.domains/' },
+      { label: 'vitalik.eth Lookup', url: 'https://app.ens.domains/vitalik.eth' },
+    ],
   },
   {
     id: 'aave-launch',
@@ -595,6 +608,12 @@ export const TIMELINE_DATA: TimelineNode[] = [
     importance: 'major',
     content: `Aave introduced flash loans — a DeFi primitive that seemed impossible. Borrow any amount with zero collateral, as long as you repay within the same transaction. This enabled complex arbitrage, liquidations, and composable DeFi strategies.`,
     tags: ['defi'],
+    links: [
+      { label: 'Aave Official', url: 'https://aave.com/' },
+      { label: 'Flash Loans Explained', url: 'https://docs.aave.com/faq/flash-loans' },
+      { label: 'Aave V1 Announcement', url: 'https://medium.com/aave/aave-v1-is-officially-on-mainnet-f1a01e2a0c23' },
+      { label: 'AAVE Token', url: 'https://etherscan.io/token/0x7fc66500c84a76ad7e9c93437bfc5ac33e2ddae9' },
+    ],
   },
   {
     id: 'nft-summer',
