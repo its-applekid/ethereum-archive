@@ -201,36 +201,43 @@ export function LiveBlockFeed({ variant = 'full', maxBlocks = 5 }: LiveBlockFeed
           </div>
         )}
 
-        {blocks.map((block, index) => (
-          <div 
-            key={block.hash}
-            className={`px-4 py-3 transition-colors ${index === 0 ? 'bg-[var(--eth-purple)]/5' : ''}`}
-          >
-            <div className="flex items-center justify-between mb-1">
-              <a
-                href={`https://etherscan.io/block/${block.number}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono font-medium text-[var(--eth-purple)] hover:underline"
-              >
-                #{block.number.toLocaleString()}
-              </a>
-              <span className="text-xs text-[var(--text-muted)]">
-                {formatTimestamp(block.timestamp)}
-              </span>
+        {blocks.slice().reverse().map((block, index, arr) => {
+          // Fade older blocks (index 0 is oldest after reverse)
+          const opacity = 0.4 + (index / arr.length) * 0.6
+          const isNewest = index === arr.length - 1
+          
+          return (
+            <div 
+              key={block.hash}
+              className={`px-4 py-3 transition-all duration-500 ${isNewest ? 'bg-[var(--eth-purple)]/10' : ''}`}
+              style={{ opacity }}
+            >
+              <div className="flex items-center justify-between mb-1">
+                <a
+                  href={`https://etherscan.io/block/${block.number}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono font-medium text-[var(--eth-purple)] hover:underline"
+                >
+                  #{block.number.toLocaleString()}
+                </a>
+                <span className="text-xs text-[var(--text-muted)]">
+                  {formatTimestamp(block.timestamp)}
+                </span>
+              </div>
+              <div className="flex items-center gap-4 text-xs text-[var(--text-muted)]">
+                <span>Gas: {block.gasUsed ? formatGas(block.gasUsed) : '-'}</span>
+                <span>Base: {formatBaseFee(block.baseFeeGwei)}</span>
+                <span 
+                  className="font-mono truncate max-w-[120px]" 
+                  title={block.hash}
+                >
+                  {block.hash.slice(0, 10)}...
+                </span>
+              </div>
             </div>
-            <div className="flex items-center gap-4 text-xs text-[var(--text-muted)]">
-              <span>Gas: {block.gasUsed ? formatGas(block.gasUsed) : '-'}</span>
-              <span>Base: {formatBaseFee(block.baseFeeGwei)}</span>
-              <span 
-                className="font-mono truncate max-w-[120px]" 
-                title={block.hash}
-              >
-                {block.hash.slice(0, 10)}...
-              </span>
-            </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )

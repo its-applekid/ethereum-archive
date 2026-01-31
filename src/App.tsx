@@ -5,6 +5,7 @@ import { DetailPanel } from './components/DetailPanel'
 import { L2Chains } from './components/L2Chains'
 import { AudioPlayer } from './components/AudioPlayer'
 import { LiveBlockFeed } from './components/LiveBlockFeed'
+import { FutureHistory } from './components/FutureHistory'
 import { TagFilter } from './components/TagFilter'
 import { TIMELINE_DATA, ERA_INFO } from './data/timeline'
 import type { TimelineNode, Era, Tag } from './data/timeline'
@@ -140,6 +141,9 @@ function App() {
             <LiveBlockFeed variant="full" maxBlocks={5} />
           </div>
         </section>
+
+        {/* Future History - upcoming upgrades */}
+        <FutureHistory />
       </main>
 
       {/* Detail Panel */}
