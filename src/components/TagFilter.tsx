@@ -112,7 +112,8 @@ export function TagFilter({ activeTags, onTagsChange }: TagFilterProps) {
                     style={{
                       backgroundColor: isActive ? info.color + '30' : 'var(--bg-tertiary)',
                       color: isActive ? info.color : 'var(--text-muted)',
-                      ringColor: isActive ? info.color : 'transparent',
+                      // @ts-expect-error CSS custom property for ring color
+                      '--tw-ring-color': isActive ? info.color : 'transparent',
                     }}
                   >
                     <span>{info.emoji}</span>

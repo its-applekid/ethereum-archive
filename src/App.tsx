@@ -35,7 +35,6 @@ function App() {
   useEffect(() => {
     const handleScroll = () => {
       if (timelineRef.current) {
-        const rect = timelineRef.current.getBoundingClientRect()
         const scrollTop = window.scrollY
         const docHeight = document.documentElement.scrollHeight - window.innerHeight
         const progress = Math.min(1, Math.max(0, scrollTop / docHeight))
