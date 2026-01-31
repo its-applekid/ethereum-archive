@@ -134,6 +134,30 @@ Tags: `protocol`, `scaling`, `defi`, `nft`, `social`, `research`, `security`
 - The Merge countdown
 - Major DevCon keynotes
 
+### Cultural Artifacts (Celebration of Ethereum Culture)
+**Documentaries/Films:**
+- "Trust Machine" (2018)
+- "Ethereum: The Infinite Garden" (2024)
+- "Vitalik: An Ethereum Story"
+
+**Books:**
+- "The Cryptopians" — Laura Shin (2022)
+- "Mastering Ethereum" — Andreas Antonopoulos & Gavin Wood
+- "The Infinite Machine" — Camila Russo (2020)
+- "Out of the Ether" — Matthew Leising
+
+**Podcasts/Shows:**
+- Bankless
+- Unchained (Laura Shin)
+- Zero Knowledge Podcast
+
+**Art/NFTs:**
+- Beeple's Everydays
+- CryptoPunks launch
+- Art Blocks generative art
+
+*Goal: This isn't just a technical timeline — it's a celebration of Ethereum culture.*
+
 ---
 
 ## Architecture
