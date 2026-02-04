@@ -99,62 +99,61 @@ export const AutoPlay = forwardRef<AutoPlayRef, AutoPlayProps>(({ speed: initial
 
   return (
     <div 
-      className="relative"
+      className="relative py-2"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      {/* Speed slider popover */}
-      {isHovered && (
-        <div className="absolute bottom-14 left-0 bg-[var(--bg-secondary)] rounded-lg p-3 border border-[var(--bg-tertiary)] shadow-xl min-w-[180px] transition-opacity duration-200">
-          <div className="text-xs text-[var(--text-muted)] mb-2 flex justify-between">
-            <span>Speed</span>
-            <span className="text-[var(--eth-purple)]">{getSpeedLabel()}</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <svg className="w-3 h-3 text-[var(--text-muted)]" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+      {/* Container for button + slider with padding for safe hover */}
+      <div className="flex items-center">
+        {/* Play/Pause button */}
+        <button
+          onClick={handlePlayPause}
+          className={`
+            w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0
+            transition-all duration-300 shadow-lg
+            ${isPlaying 
+              ? 'bg-[var(--eth-purple)] text-white' 
+              : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
+            }
+          `}
+          title={isPlaying ? 'Pause auto-scroll' : 'Auto-scroll through history'}
+        >
+          {isPlaying ? (
+            // Pause icon
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+              <rect x="6" y="4" width="4" height="16" rx="1" />
+              <rect x="14" y="4" width="4" height="16" rx="1" />
             </svg>
-            <input
-              type="range"
-              min={MIN_SPEED}
-              max={MAX_SPEED}
-              step={100}
-              value={speed}
-              onChange={(e) => setSpeed(Number(e.target.value))}
-              className="flex-1 h-1 rounded-lg appearance-none bg-[var(--bg-tertiary)] cursor-pointer accent-[var(--eth-purple)]"
-            />
-            <svg className="w-4 h-4 text-[var(--text-muted)]" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+          ) : (
+            // Play icon
+            <svg className="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
             </svg>
-          </div>
-        </div>
-      )}
+          )}
+        </button>
 
-      <button
-        onClick={handlePlayPause}
-        className={`
-          w-12 h-12 rounded-full flex items-center justify-center
-          transition-all duration-300 shadow-lg
-          ${isPlaying 
-            ? 'bg-[var(--eth-purple)] text-white' 
-            : 'bg-[var(--bg-tertiary)] text-[var(--text-secondary)] hover:bg-[var(--bg-secondary)]'
-          }
-        `}
-        title={isPlaying ? 'Pause auto-scroll' : 'Auto-scroll through history'}
-      >
-        {isPlaying ? (
-          // Pause icon
-          <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-            <rect x="6" y="4" width="4" height="16" rx="1" />
-            <rect x="14" y="4" width="4" height="16" rx="1" />
-          </svg>
-        ) : (
-          // Play icon
-          <svg className="w-5 h-5 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z" />
-          </svg>
-        )}
-      </button>
+        {/* Speed slider - appears to the right on hover */}
+        <div 
+          className={`
+            ml-2 bg-[var(--bg-secondary)] rounded-lg px-3 py-2 
+            border border-[var(--bg-tertiary)] shadow-xl
+            flex items-center gap-3
+            transition-all duration-200 origin-left
+            ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
+          `}
+        >
+          <span className="text-xs text-[var(--text-muted)] whitespace-nowrap">{getSpeedLabel()}</span>
+          <input
+            type="range"
+            min={MIN_SPEED}
+            max={MAX_SPEED}
+            step={100}
+            value={speed}
+            onChange={(e) => setSpeed(Number(e.target.value))}
+            className="w-24 h-1 rounded-lg appearance-none bg-[var(--bg-tertiary)] cursor-pointer accent-[var(--eth-purple)]"
+          />
+        </div>
+      </div>
     </div>
   )
 })
