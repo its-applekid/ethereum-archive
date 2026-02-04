@@ -30,7 +30,7 @@ export const ControlStack = forwardRef<HTMLDivElement, ControlStackProps>(({
       
       {/* Auto-play - desktop only */}
       <div className="hidden md:block">
-        <AutoPlay ref={autoPlayRef} speed={1200} />
+        <AutoPlay ref={autoPlayRef} speed={2400} />
       </div>
       
       {/* Tag filter - always visible */}
