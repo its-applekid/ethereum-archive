@@ -18,7 +18,6 @@ function App() {
   const [selectedNode, setSelectedNode] = useState<TimelineNode | null>(null)
   const [scrollProgress, setScrollProgress] = useState(0)
   const [activeTags, setActiveTags] = useState<Tag[]>(ALL_TAGS)
-  const [experienceStarted, setExperienceStarted] = useState(false)
   const timelineRef = useRef<HTMLDivElement>(null)
   const audioRef = useRef<AudioPlayerRef>(null)
   const autoPlayRef = useRef<AutoPlayRef>(null)
@@ -60,13 +59,6 @@ function App() {
       // Clear hash when closing panel
       window.history.replaceState(null, '', window.location.pathname)
     }
-  }, [])
-
-  // Start the full experience - scroll + music
-  const startExperience = useCallback(() => {
-    setExperienceStarted(true)
-    audioRef.current?.play()
-    autoPlayRef.current?.play()
   }, [])
 
   // Filter timeline nodes based on active tags
@@ -128,39 +120,9 @@ function App() {
             <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-[var(--eth-purple)] to-[var(--eth-purple-light)] bg-clip-text text-transparent">
               The Ethereum Archive
             </h1>
-            <p className="text-xl md:text-2xl text-[var(--text-secondary)] mb-8">
+            <p className="text-xl md:text-2xl text-[var(--text-secondary)]">
               A complete history of Ethereum's evolution — from genesis to the present
             </p>
-            
-            {/* Centered play button to start experience - desktop only */}
-            {!experienceStarted ? (
-              <button
-                onClick={startExperience}
-                className="group mx-auto w-20 h-20 rounded-full bg-[var(--eth-purple)] hover:bg-[var(--eth-purple-light)] text-white hidden md:flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"
-                title="Start the Journey"
-              >
-                <svg className="w-10 h-10 ml-1" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M8 5v14l11-7z" />
-                </svg>
-              </button>
-            ) : (
-              <div className="hidden md:flex items-center justify-center gap-2 text-[var(--text-muted)]">
-                <span>Scroll to explore</span>
-                <svg 
-                  className="w-5 h-5 animate-bounce" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M19 14l-7 7m0 0l-7-7m7 7V3" 
-                  />
-                </svg>
-              </div>
-            )}
           </div>
         </section>
 
