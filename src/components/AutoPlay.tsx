@@ -90,13 +90,6 @@ export const AutoPlay = forwardRef<AutoPlayRef, AutoPlayProps>(({ speed: initial
     setIsPlaying(prev => !prev)
   }
 
-  const getSpeedLabel = () => {
-    if (speed < 1500) return 'Slow'
-    if (speed < 4000) return 'Medium'
-    if (speed < 7000) return 'Fast'
-    return 'Very Fast'
-  }
-
   return (
     <div 
       className="relative py-2"
@@ -137,12 +130,12 @@ export const AutoPlay = forwardRef<AutoPlayRef, AutoPlayProps>(({ speed: initial
           className={`
             ml-2 bg-[var(--bg-secondary)] rounded-lg px-3 py-2 
             border border-[var(--bg-tertiary)] shadow-xl
-            flex items-center gap-3
+            flex items-center gap-2
             transition-all duration-200 origin-left
             ${isHovered ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
           `}
         >
-          <span className="text-xs text-[var(--text-muted)] whitespace-nowrap">{getSpeedLabel()}</span>
+          <span className="text-sm">🐢</span>
           <input
             type="range"
             min={MIN_SPEED}
@@ -152,6 +145,7 @@ export const AutoPlay = forwardRef<AutoPlayRef, AutoPlayProps>(({ speed: initial
             onChange={(e) => setSpeed(Number(e.target.value))}
             className="w-24 h-1 rounded-lg appearance-none bg-[var(--bg-tertiary)] cursor-pointer accent-[var(--eth-purple)]"
           />
+          <span className="text-sm">🚀</span>
         </div>
       </div>
     </div>
