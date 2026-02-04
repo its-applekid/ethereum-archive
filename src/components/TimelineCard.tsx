@@ -7,75 +7,77 @@ interface TimelineCardProps {
 }
 
 // Tag styling using Gruvbox colors
+// Tint values are the accent colors at ~8% opacity for subtle background tint
 const TAG_CONFIG: Record<Tag, { 
   label: string
   emoji: string
-  // Gruvbox accent color (bright variant for visibility)
   accent: string
-  // Background: solid Gruvbox bg with slight tint
-  bg: string
+  tint: string // Hex color with low opacity for card background tint
 }> = {
   protocol: { 
     label: 'Protocol', 
     emoji: '⛓️',
     accent: 'var(--gruvbox-purple-bright)',
-    bg: 'var(--gruvbox-bg1)',
+    tint: 'rgba(211, 134, 155, 0.08)', // gruvbox purple-bright
   },
   scaling: { 
     label: 'Scaling', 
     emoji: '📈',
     accent: 'var(--gruvbox-blue-bright)',
-    bg: 'var(--gruvbox-bg1)',
+    tint: 'rgba(131, 165, 152, 0.08)', // gruvbox blue-bright
   },
   defi: { 
     label: 'DeFi', 
     emoji: '💰',
     accent: 'var(--gruvbox-green-bright)',
-    bg: 'var(--gruvbox-bg1)',
+    tint: 'rgba(184, 187, 38, 0.08)', // gruvbox green-bright
   },
   nft: { 
     label: 'NFT', 
     emoji: '🖼️',
     accent: 'var(--gruvbox-yellow-bright)',
-    bg: 'var(--gruvbox-bg1)',
+    tint: 'rgba(250, 189, 47, 0.08)', // gruvbox yellow-bright
   },
   social: { 
     label: 'Social', 
     emoji: '💬',
     accent: 'var(--gruvbox-purple-bright)',
-    bg: 'var(--gruvbox-bg1)',
+    tint: 'rgba(211, 134, 155, 0.08)', // gruvbox purple-bright
   },
   research: { 
     label: 'Research', 
     emoji: '🔬',
     accent: 'var(--gruvbox-blue-bright)',
-    bg: 'var(--gruvbox-bg1)',
+    tint: 'rgba(131, 165, 152, 0.08)', // gruvbox blue-bright
   },
   security: { 
     label: 'Security', 
     emoji: '🔒',
     accent: 'var(--gruvbox-red-bright)',
-    bg: 'var(--gruvbox-bg1)',
+    tint: 'rgba(251, 73, 52, 0.08)', // gruvbox red-bright
   },
   adoption: { 
     label: 'Adoption', 
     emoji: '🏛️',
     accent: 'var(--gruvbox-aqua-bright)',
-    bg: 'var(--gruvbox-bg1)',
+    tint: 'rgba(142, 192, 124, 0.08)', // gruvbox aqua-bright
   },
   tvl: { 
     label: 'TVL', 
     emoji: '📊',
     accent: 'var(--gruvbox-aqua-bright)',
-    bg: 'var(--gruvbox-bg1)',
+    tint: 'rgba(142, 192, 124, 0.08)', // gruvbox aqua-bright
   },
   blobs: { 
     label: 'Blobs', 
     emoji: '🫧',
     accent: 'var(--gruvbox-blue-bright)',
-    bg: 'var(--gruvbox-bg1)',
+    tint: 'rgba(131, 165, 152, 0.08)', // gruvbox blue-bright
   },
 }
+
+// Default tint for untagged cards
+const DEFAULT_TINT = 'rgba(168, 153, 132, 0.05)' // gruvbox fg4
 
 export function TimelineCard({ node, isSelected, onClick }: TimelineCardProps) {
   const tags = node.tags || []
@@ -86,8 +88,9 @@ export function TimelineCard({ node, isSelected, onClick }: TimelineCardProps) {
     day: 'numeric',
   })
   
-  // Get accent color from primary tag
+  // Get accent color and tint from primary tag
   const accentColor = primaryTag ? TAG_CONFIG[primaryTag].accent : 'var(--gruvbox-fg4)'
+  const tintColor = primaryTag ? TAG_CONFIG[primaryTag].tint : DEFAULT_TINT
 
   return (
     <button
@@ -100,7 +103,7 @@ export function TimelineCard({ node, isSelected, onClick }: TimelineCardProps) {
         }
       `}
       style={{ 
-        backgroundColor: 'var(--bg-card)',
+        background: `linear-gradient(${tintColor}, ${tintColor}), var(--bg-card)`,
         borderLeftWidth: '3px',
         borderLeftColor: accentColor,
       }}
