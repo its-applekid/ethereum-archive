@@ -1,39 +1,24 @@
 import { useState, useEffect } from 'react'
 
-type Theme = 'dark' | 'light' | 'system'
+type Theme = 'dark' | 'light'
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window === 'undefined') return 'system'
-    return (localStorage.getItem('theme') as Theme) || 'system'
+    if (typeof window === 'undefined') return 'dark'
+    const stored = localStorage.getItem('theme') as Theme | null
+    // Default to dark, only use stored if it's valid
+    return stored === 'light' ? 'light' : 'dark'
   })
-
-  const [resolvedTheme, setResolvedTheme] = useState<'dark' | 'light'>('dark')
 
   useEffect(() => {
     const root = document.documentElement
     
-    const applyTheme = (isDark: boolean) => {
-      if (isDark) {
-        root.classList.remove('light')
-        root.classList.add('dark')
-        setResolvedTheme('dark')
-      } else {
-        root.classList.remove('dark')
-        root.classList.add('light')
-        setResolvedTheme('light')
-      }
-    }
-
-    if (theme === 'system') {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-      applyTheme(mediaQuery.matches)
-      
-      const handler = (e: MediaQueryListEvent) => applyTheme(e.matches)
-      mediaQuery.addEventListener('change', handler)
-      return () => mediaQuery.removeEventListener('change', handler)
+    if (theme === 'dark') {
+      root.classList.remove('light')
+      root.classList.add('dark')
     } else {
-      applyTheme(theme === 'dark')
+      root.classList.remove('dark')
+      root.classList.add('light')
     }
   }, [theme])
 
@@ -42,5 +27,5 @@ export function useTheme() {
     localStorage.setItem('theme', newTheme)
   }
 
-  return { theme, setTheme: setThemeAndPersist, resolvedTheme }
+  return { theme, setTheme: setThemeAndPersist }
 }
