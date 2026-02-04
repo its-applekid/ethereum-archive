@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useImperativeHandle, forwardRef } from 'react'
 
 interface AutoPlayProps {
-  /** Scroll speed in pixels per second */
+  /** Initial scroll speed in pixels per second */
   speed?: number
 }
 
@@ -11,16 +11,30 @@ export interface AutoPlayRef {
   toggle: () => void
 }
 
-export const AutoPlay = forwardRef<AutoPlayRef, AutoPlayProps>(({ speed = 50 }, ref) => {
+// Speed range: 500 (slow) to 10000 (very fast)
+const MIN_SPEED = 500
+const MAX_SPEED = 10000
+const DEFAULT_SPEED = 2400
+
+export const AutoPlay = forwardRef<AutoPlayRef, AutoPlayProps>(({ speed: initialSpeed = DEFAULT_SPEED }, ref) => {
   const [isPlaying, setIsPlaying] = useState(false)
+  const [speed, setSpeed] = useState(initialSpeed)
+  const [isHovered, setIsHovered] = useState(false)
   
   useImperativeHandle(ref, () => ({
     play: () => setIsPlaying(true),
     pause: () => setIsPlaying(false),
     toggle: () => setIsPlaying(prev => !prev),
   }))
+  
   const animationRef = useRef<number | null>(null)
   const lastTimeRef = useRef<number | null>(null)
+  const speedRef = useRef(speed)
+  
+  // Keep speedRef in sync
+  useEffect(() => {
+    speedRef.current = speed
+  }, [speed])
 
   // Animation loop - simple constant scroll
   useEffect(() => {
@@ -44,8 +58,8 @@ export const AutoPlay = forwardRef<AutoPlayRef, AutoPlayProps>(({ speed = 50 }, 
       const delta = timestamp - lastTimeRef.current
       lastTimeRef.current = timestamp
 
-      // Calculate pixels to scroll based on time elapsed
-      const pixelsToScroll = (speed * delta) / 1000
+      // Calculate pixels to scroll based on time elapsed (use ref for latest speed)
+      const pixelsToScroll = (speedRef.current * delta) / 1000
 
       // Check if we've reached the bottom
       const maxScroll = document.documentElement.scrollHeight - window.innerHeight
@@ -70,14 +84,52 @@ export const AutoPlay = forwardRef<AutoPlayRef, AutoPlayProps>(({ speed = 50 }, 
         cancelAnimationFrame(animationRef.current)
       }
     }
-  }, [isPlaying, speed])
+  }, [isPlaying])
 
   const handlePlayPause = () => {
     setIsPlaying(prev => !prev)
   }
 
+  const getSpeedLabel = () => {
+    if (speed < 1500) return 'Slow'
+    if (speed < 4000) return 'Medium'
+    if (speed < 7000) return 'Fast'
+    return 'Very Fast'
+  }
+
   return (
-    <div className="relative">
+    <div 
+      className="relative"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Speed slider popover */}
+      {isHovered && (
+        <div className="absolute bottom-14 left-0 bg-[var(--bg-secondary)] rounded-lg p-3 border border-[var(--bg-tertiary)] shadow-xl min-w-[180px] transition-opacity duration-200">
+          <div className="text-xs text-[var(--text-muted)] mb-2 flex justify-between">
+            <span>Speed</span>
+            <span className="text-[var(--eth-purple)]">{getSpeedLabel()}</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <svg className="w-3 h-3 text-[var(--text-muted)]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+            <input
+              type="range"
+              min={MIN_SPEED}
+              max={MAX_SPEED}
+              step={100}
+              value={speed}
+              onChange={(e) => setSpeed(Number(e.target.value))}
+              className="flex-1 h-1 rounded-lg appearance-none bg-[var(--bg-tertiary)] cursor-pointer accent-[var(--eth-purple)]"
+            />
+            <svg className="w-4 h-4 text-[var(--text-muted)]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+            </svg>
+          </div>
+        </div>
+      )}
+
       <button
         onClick={handlePlayPause}
         className={`
