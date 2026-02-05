@@ -302,7 +302,7 @@ For each event, find:
 - [x] **13. Staking Milestones** — Added 500k validators (Jan 2023) and 1M validators (March 2024)
 - [x] **14. DeFi TVL Milestones** — Added: $1B (Feb 2020), $10B (Sept 2020), $100B (Oct 2021), ATH ~$177B (Nov 2021)
 - [x] **15. MEV Timeline** — Added Flashbots launch (Nov 2020) and MEV-Boost (Sept 2022)
-- [ ] **16. L2 Security Stages** — Events when Optimism/Arbitrum/etc. reached Stage 1, Stage 2.
+- [x] **16. L2 Security Stages** — Added Optimism Stage 1 (June 2024), Arbitrum Stage 1/BoLD (Feb 2025)
 - [x] **17. Adoption Milestones** — Added PayPal PYUSD (Aug 2023), Spot ETH ETFs (July 2024)
 
 ### Priority 5: Protocol Deep Links
