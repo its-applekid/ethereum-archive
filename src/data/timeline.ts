@@ -1811,6 +1811,23 @@ This upgrade marked a major step toward account abstraction and improved L2 scal
 
   // MAJOR ETHEREUM CONFERENCES (beyond DevCon)
   {
+    id: 'edcon-2017',
+    type: 'milestone',
+    date: '2017-02-17',
+    blockNumber: 3_150_000,
+    approximateBlock: true,
+    title: 'EDCON 2017 (Paris)',
+    summary: 'First EDCON. European Ethereum Development Conference brings the community to Paris.',
+    era: 'homestead',
+    importance: 'significant',
+    content: `The first EDCON (European Ethereum Development Conference) was held at ESCP Europe in Paris, February 17-18, 2017. The conference covered Ethereum technology and research including Proof of Stake, scalability, and privacy. It established a tradition of annual community-driven conferences that would circle the globe in subsequent years.`,
+    tags: ['social', 'protocol'],
+    links: [
+      { label: 'EDCON 2017 Website', url: 'https://2017.edcon.io/' },
+      { label: 'EDCON Official', url: 'https://www.edcon.io/' },
+    ],
+  },
+  {
     id: 'ethcc-1',
     type: 'milestone',
     date: '2018-03-08',
@@ -1825,6 +1842,23 @@ This upgrade marked a major step toward account abstraction and improved L2 scal
     tags: ['social'],
     links: [
       { label: 'ETHCC Website', url: 'https://ethcc.io/' },
+    ],
+  },
+  {
+    id: 'edcon-2018',
+    type: 'milestone',
+    date: '2018-05-03',
+    blockNumber: 5_550_000,
+    approximateBlock: true,
+    title: 'EDCON 2018 (Toronto)',
+    summary: 'EDCON goes global. Three-day conference at Ryerson University covers Casper, sharding, and Plasma.',
+    era: 'metropolis',
+    importance: 'significant',
+    content: `EDCON 2018 was held at Ryerson University in Toronto, Canada, from May 3-5. The conference featured deep dives into Casper (Proof of Stake), sharding research, and Plasma scaling solutions. Vitalik Buterin and other core researchers presented the latest protocol developments. The event marked EDCON's expansion beyond Europe.`,
+    tags: ['social', 'protocol', 'scaling'],
+    links: [
+      { label: 'EDCON 2018 Website', url: 'https://2018.edcon.io/' },
+      { label: 'EDCON Official', url: 'https://www.edcon.io/' },
     ],
   },
   {
