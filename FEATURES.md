@@ -231,8 +231,8 @@ Sources:
 
 **Art/NFTs:**
 - Beeple's Everydays
-- CryptoPunks launch
-- Art Blocks generative art
+- CryptoPunks launch (already in timeline)
+- Art Blocks generative art (added: Art Blocks Launch, Nov 2020)
 
 *Goal: This isn't just a technical timeline — it's a celebration of Ethereum culture.*
 

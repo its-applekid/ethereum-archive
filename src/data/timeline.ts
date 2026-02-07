@@ -76,6 +76,22 @@ export const ERA_INFO: Record<Era, { name: string; years: string; color: string 
 export const TIMELINE_DATA: TimelineNode[] = [
   // GENESIS ERA - Pre-launch history
   {
+    id: 'bitcoin-magazine',
+    type: 'milestone',
+    date: '2011-09-01',
+    title: 'Bitcoin Magazine Founded',
+    summary: 'Vitalik Buterin co-founds Bitcoin Magazine with Mihai Alisie — his entry into the crypto world.',
+    era: 'genesis',
+    importance: 'significant',
+    content: `At just 17 years old, Vitalik Buterin co-founded Bitcoin Magazine with Romanian Bitcoin enthusiast Mihai Alisie. Buterin spent 10-20 hours per week writing about Bitcoin technology, economics, and culture. This work established him as a leading voice in the crypto community and exposed him to the limitations of Bitcoin that would eventually inspire Ethereum. Bitcoin Magazine remains active today as one of the longest-running crypto publications.`,
+    tags: ['social'],
+    links: [
+      { label: 'Bitcoin Magazine', url: 'https://bitcoinmagazine.com/' },
+      { label: 'Vitalik\'s Articles', url: 'https://bitcoinmagazine.com/authors/vitalik-buterin' },
+      { label: 'Bitcoin Magazine History (Wikipedia)', url: 'https://en.wikipedia.org/wiki/Bitcoin_Magazine' },
+    ],
+  },
+  {
     id: 'whitepaper',
     type: 'research',
     date: '2013-11-27',
